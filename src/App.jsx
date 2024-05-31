@@ -1,28 +1,58 @@
+import React, { useState } from "react";
 import "./App.css";
-import Counter from "./components/Counter";
-import ExponentTwo from "./components/ExponentTwo";
-import ExponentThree from "./components/ExponentThree";
-import ExponentFour from "./components/ExponentFour";
-import ExponentFive from "./components/ExponentFive";
-import ExponentSix from "./components/ExponentSix";
 
+function App() {
+  const [count, setCount] = useState(0);
 
-function App () {
+  const decrement = () => setCount((prevCount) => prevCount - 1);
+  const increment = () => setCount((prevCount) => prevCount + 1);
+
+  const ExponentTwo = ({ count }) => (
+    <div>
+      2^({count}) = {Math.pow(2, count)}
+    </div>
+  );
+  const ExponentThree = ({ count }) => (
+    <div>
+      3^({count}) = {Math.pow(3, count)}
+    </div>
+  );
+  const ExponentFour = ({ count }) => (
+    <div>
+      4^({count}) = {Math.pow(4, count)}
+    </div>
+  );
+  const ExponentFive = ({ count }) => (
+    <div>
+      5^({count}) = {Math.pow(5, count)}
+    </div>
+  );
+  const ExponentSix = ({ count }) => (
+    <div>
+      6^({count}) = {Math.pow(6, count)}
+    </div>
+  );
+
   return (
     <div className="App">
-      <h2><em>Counter</em></h2>
-  
-      <Counter/>
-
+      <h2>
+        <em>Counter</em>
+      </h2>
+      <div className="counter">
+        <button onClick={decrement}>-</button>
+        <span>{count}</span>
+        <button onClick={increment}>+</button>
+      </div>
       <br />
-      <h2><em>Exponents</em></h2>
-
+      <h2>
+        <em>Exponents</em>
+      </h2>
       <div className="container">
-        <ExponentTwo />
-        <ExponentThree />
-        <ExponentFour />
-        <ExponentFive />
-        <ExponentSix />
+        <ExponentTwo count={count} />
+        <ExponentThree count={count} />
+        <ExponentFour count={count} />
+        <ExponentFive count={count} />
+        <ExponentSix count={count} />
       </div>
     </div>
   );
